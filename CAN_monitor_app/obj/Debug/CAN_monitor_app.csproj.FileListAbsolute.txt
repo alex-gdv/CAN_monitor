@@ -1,0 +1,13 @@
+C:\Users\aleja\source\repos\CAN_monitor_app\bin\Debug\CAN_monitor_app.exe
+C:\Users\aleja\source\repos\CAN_monitor_app\bin\Debug\CAN_monitor_app.pdb
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.csproj.AssemblyReference.cache
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.Menu.resources
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.Properties.Resources.resources
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.csproj.GenerateResource.cache
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.csproj.CoreCompileInputs.cache
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.exe
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.pdb
+C:\Users\aleja\source\repos\CAN_monitor_app\bin\Debug\CAN_monitor_lib.dll
+C:\Users\aleja\source\repos\CAN_monitor_app\bin\Debug\CAN_monitor_lib.pdb
+C:\Users\aleja\source\repos\CAN_monitor_app\obj\Debug\CAN_monitor_app.csproj.CopyComplete
+C:\Users\aleja\source\repos\CAN_monitor_app\bin\Debug\CAN_monitor_app.exe.config

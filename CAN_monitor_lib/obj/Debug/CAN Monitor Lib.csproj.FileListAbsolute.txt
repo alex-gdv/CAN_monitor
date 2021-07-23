@@ -1,0 +1,8 @@
+C:\Users\aleja\source\repos\CAN Monitor Lib\bin\Debug\CAN Monitor Lib.dll
+C:\Users\aleja\source\repos\CAN Monitor Lib\bin\Debug\CAN Monitor Lib.pdb
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN Monitor Lib.csproj.AssemblyReference.cache
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN Monitor Lib.csproj.CoreCompileInputs.cache
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN Monitor Lib.dll
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN Monitor Lib.pdb
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN_Monitor_Lib.CAN_Monitor.resources
+C:\Users\aleja\source\repos\CAN Monitor Lib\obj\Debug\CAN Monitor Lib.csproj.GenerateResource.cache

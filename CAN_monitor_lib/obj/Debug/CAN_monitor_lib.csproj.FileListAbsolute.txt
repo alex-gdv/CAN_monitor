@@ -1,0 +1,10 @@
+C:\Users\aleja\source\repos\CAN_monitor_lib\bin\Debug\CAN_monitor_lib.dll
+C:\Users\aleja\source\repos\CAN_monitor_lib\bin\Debug\CAN_monitor_lib.pdb
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.csproj.AssemblyReference.cache
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.CAN_monitor.resources
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.csproj.GenerateResource.cache
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.csproj.CoreCompileInputs.cache
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.dll
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.pdb
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.CAN_monitor_global.resources
+C:\Users\aleja\source\repos\CAN_monitor_lib\obj\Debug\CAN_monitor_lib.CAN_monitor_individual.resources
