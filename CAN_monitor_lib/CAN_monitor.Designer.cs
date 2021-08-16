@@ -50,7 +50,7 @@
             this.button_setup = new System.Windows.Forms.Button();
             this.label_bitrate = new System.Windows.Forms.Label();
             this.comboBox_can_bitrate = new System.Windows.Forms.ComboBox();
-            this.groupBox_can_frame_transmit = new System.Windows.Forms.GroupBox();
+            this.groupBox_can_transmit_frame = new System.Windows.Forms.GroupBox();
             this.label_data_bytes = new System.Windows.Forms.Label();
             this.label_dlc = new System.Windows.Forms.Label();
             this.label_can_id = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             this.textBox_hex7 = new System.Windows.Forms.TextBox();
             this.textBox_hex5 = new System.Windows.Forms.TextBox();
             this.textBox_hex6 = new System.Windows.Forms.TextBox();
-            this.groupBox_can_frame_receive = new System.Windows.Forms.GroupBox();
+            this.groupBox_can_receive_frame = new System.Windows.Forms.GroupBox();
             this.richTextBox_receive = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_com_port = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,9 +76,9 @@
             this.toolStripStatusLabel_msg_counter_received = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox_com_port.SuspendLayout();
             this.groupBox_can_commands.SuspendLayout();
-            this.groupBox_can_frame_transmit.SuspendLayout();
+            this.groupBox_can_transmit_frame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).BeginInit();
-            this.groupBox_can_frame_receive.SuspendLayout();
+            this.groupBox_can_receive_frame.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,7 +111,7 @@
             this.button_com_close.TabIndex = 18;
             this.button_com_close.Text = "Close";
             this.button_com_close.UseVisualStyleBackColor = true;
-            this.button_com_close.Click += new System.EventHandler(this.button_com_close_Click);
+            this.button_com_close.Click += new System.EventHandler(this.button_com_close_click);
             // 
             // button_com_open
             // 
@@ -122,7 +122,7 @@
             this.button_com_open.TabIndex = 17;
             this.button_com_open.Text = "Open";
             this.button_com_open.UseVisualStyleBackColor = true;
-            this.button_com_open.Click += new System.EventHandler(this.button_com_open_Click);
+            this.button_com_open.Click += new System.EventHandler(this.button_com_open_click);
             // 
             // label_com_baud_rate
             // 
@@ -149,6 +149,7 @@
             this.comboBox_com_baud_rate.Name = "comboBox_com_baud_rate";
             this.comboBox_com_baud_rate.Size = new System.Drawing.Size(99, 24);
             this.comboBox_com_baud_rate.TabIndex = 14;
+            this.comboBox_com_baud_rate.SelectedIndexChanged += new System.EventHandler(this.comboBox_com_baud_rate_SelectedIndexChanged);
             // 
             // groupBox_can_commands
             // 
@@ -185,7 +186,7 @@
             this.button_auto_off.TabIndex = 29;
             this.button_auto_off.Text = "Auto Off";
             this.button_auto_off.UseVisualStyleBackColor = true;
-            this.button_auto_off.Click += new System.EventHandler(this.button_auto_off_Click);
+            this.button_auto_off.Click += new System.EventHandler(this.button_auto_off_click);
             // 
             // button_auto_on
             // 
@@ -196,7 +197,7 @@
             this.button_auto_on.TabIndex = 28;
             this.button_auto_on.Text = "Auto On";
             this.button_auto_on.UseVisualStyleBackColor = true;
-            this.button_auto_on.Click += new System.EventHandler(this.button_auto_on_Click);
+            this.button_auto_on.Click += new System.EventHandler(this.button_auto_on_click);
             // 
             // button_time_stamp_off
             // 
@@ -207,7 +208,7 @@
             this.button_time_stamp_off.TabIndex = 27;
             this.button_time_stamp_off.Text = "Time Off";
             this.button_time_stamp_off.UseVisualStyleBackColor = true;
-            this.button_time_stamp_off.Click += new System.EventHandler(this.button_time_stamp_off_Click);
+            this.button_time_stamp_off.Click += new System.EventHandler(this.button_time_stamp_off_click);
             // 
             // button_time_stamp_on
             // 
@@ -218,7 +219,7 @@
             this.button_time_stamp_on.TabIndex = 26;
             this.button_time_stamp_on.Text = "Time On";
             this.button_time_stamp_on.UseVisualStyleBackColor = true;
-            this.button_time_stamp_on.Click += new System.EventHandler(this.button_time_stamp_on_Click);
+            this.button_time_stamp_on.Click += new System.EventHandler(this.button_time_stamp_on_click);
             // 
             // button_poll_all
             // 
@@ -229,7 +230,7 @@
             this.button_poll_all.TabIndex = 25;
             this.button_poll_all.Text = "Poll All";
             this.button_poll_all.UseVisualStyleBackColor = true;
-            this.button_poll_all.Click += new System.EventHandler(this.button_poll_all_Click);
+            this.button_poll_all.Click += new System.EventHandler(this.button_poll_all_click);
             // 
             // button_poll_one
             // 
@@ -240,7 +241,7 @@
             this.button_poll_one.TabIndex = 24;
             this.button_poll_one.Text = "Poll One";
             this.button_poll_one.UseVisualStyleBackColor = true;
-            this.button_poll_one.Click += new System.EventHandler(this.button_poll_one_Click);
+            this.button_poll_one.Click += new System.EventHandler(this.button_poll_one_click);
             // 
             // button_serial_number
             // 
@@ -251,7 +252,7 @@
             this.button_serial_number.TabIndex = 23;
             this.button_serial_number.Text = "S/No";
             this.button_serial_number.UseVisualStyleBackColor = true;
-            this.button_serial_number.Click += new System.EventHandler(this.button_serial_number_Click);
+            this.button_serial_number.Click += new System.EventHandler(this.button_serial_number_click);
             // 
             // button_can_version
             // 
@@ -262,7 +263,7 @@
             this.button_can_version.TabIndex = 22;
             this.button_can_version.Text = "Version";
             this.button_can_version.UseVisualStyleBackColor = true;
-            this.button_can_version.Click += new System.EventHandler(this.button_can_version_Click);
+            this.button_can_version.Click += new System.EventHandler(this.button_can_version_click);
             // 
             // button_can_flags
             // 
@@ -273,7 +274,7 @@
             this.button_can_flags.TabIndex = 21;
             this.button_can_flags.Text = "Flags";
             this.button_can_flags.UseVisualStyleBackColor = true;
-            this.button_can_flags.Click += new System.EventHandler(this.button_can_flags_Click);
+            this.button_can_flags.Click += new System.EventHandler(this.button_can_flags_click);
             // 
             // button_can_close
             // 
@@ -284,7 +285,7 @@
             this.button_can_close.TabIndex = 20;
             this.button_can_close.Text = "Close";
             this.button_can_close.UseVisualStyleBackColor = true;
-            this.button_can_close.Click += new System.EventHandler(this.button_can_close_Click);
+            this.button_can_close.Click += new System.EventHandler(this.button_can_close_click);
             // 
             // button_can_open
             // 
@@ -295,7 +296,7 @@
             this.button_can_open.TabIndex = 19;
             this.button_can_open.Text = "Open";
             this.button_can_open.UseVisualStyleBackColor = true;
-            this.button_can_open.Click += new System.EventHandler(this.button_can_open_Click);
+            this.button_can_open.Click += new System.EventHandler(this.button_can_open_click);
             // 
             // button_setup
             // 
@@ -306,7 +307,7 @@
             this.button_setup.TabIndex = 18;
             this.button_setup.Text = "Setup";
             this.button_setup.UseVisualStyleBackColor = true;
-            this.button_setup.Click += new System.EventHandler(this.button_setup_Click);
+            this.button_setup.Click += new System.EventHandler(this.button_setup_click);
             // 
             // label_bitrate
             // 
@@ -336,35 +337,36 @@
             this.comboBox_can_bitrate.Name = "comboBox_can_bitrate";
             this.comboBox_can_bitrate.Size = new System.Drawing.Size(99, 24);
             this.comboBox_can_bitrate.TabIndex = 16;
+            this.comboBox_can_bitrate.SelectedIndexChanged += new System.EventHandler(this.comboBox_can_bitrate_SelectedIndexChanged);
             // 
-            // groupBox_can_frame_transmit
+            // groupBox_can_transmit_frame
             // 
-            this.groupBox_can_frame_transmit.Controls.Add(this.label_data_bytes);
-            this.groupBox_can_frame_transmit.Controls.Add(this.label_dlc);
-            this.groupBox_can_frame_transmit.Controls.Add(this.label_can_id);
-            this.groupBox_can_frame_transmit.Controls.Add(this.label_result);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_id);
-            this.groupBox_can_frame_transmit.Controls.Add(this.button_send_frame);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex1);
-            this.groupBox_can_frame_transmit.Controls.Add(this.checkBox_rtr);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex2);
-            this.groupBox_can_frame_transmit.Controls.Add(this.checkBox_ext);
-            this.groupBox_can_frame_transmit.Controls.Add(this.numericUpDown_dlc);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex3);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex8);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex4);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex7);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex5);
-            this.groupBox_can_frame_transmit.Controls.Add(this.textBox_hex6);
-            this.groupBox_can_frame_transmit.Enabled = false;
-            this.groupBox_can_frame_transmit.Location = new System.Drawing.Point(16, 334);
-            this.groupBox_can_frame_transmit.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_frame_transmit.Name = "groupBox_can_frame_transmit";
-            this.groupBox_can_frame_transmit.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_frame_transmit.Size = new System.Drawing.Size(447, 174);
-            this.groupBox_can_frame_transmit.TabIndex = 14;
-            this.groupBox_can_frame_transmit.TabStop = false;
-            this.groupBox_can_frame_transmit.Text = "CAN Transmit Frame (HEX)";
+            this.groupBox_can_transmit_frame.Controls.Add(this.label_data_bytes);
+            this.groupBox_can_transmit_frame.Controls.Add(this.label_dlc);
+            this.groupBox_can_transmit_frame.Controls.Add(this.label_can_id);
+            this.groupBox_can_transmit_frame.Controls.Add(this.label_result);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_id);
+            this.groupBox_can_transmit_frame.Controls.Add(this.button_send_frame);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex1);
+            this.groupBox_can_transmit_frame.Controls.Add(this.checkBox_rtr);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex2);
+            this.groupBox_can_transmit_frame.Controls.Add(this.checkBox_ext);
+            this.groupBox_can_transmit_frame.Controls.Add(this.numericUpDown_dlc);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex3);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex8);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex4);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex7);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex5);
+            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex6);
+            this.groupBox_can_transmit_frame.Enabled = false;
+            this.groupBox_can_transmit_frame.Location = new System.Drawing.Point(16, 334);
+            this.groupBox_can_transmit_frame.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox_can_transmit_frame.Name = "groupBox_can_transmit_frame";
+            this.groupBox_can_transmit_frame.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox_can_transmit_frame.Size = new System.Drawing.Size(447, 174);
+            this.groupBox_can_transmit_frame.TabIndex = 14;
+            this.groupBox_can_transmit_frame.TabStop = false;
+            this.groupBox_can_transmit_frame.Text = "CAN Transmit Frame (HEX)";
             // 
             // label_data_bytes
             // 
@@ -426,7 +428,7 @@
             this.button_send_frame.TabIndex = 12;
             this.button_send_frame.Text = "Send Frame";
             this.button_send_frame.UseVisualStyleBackColor = true;
-            this.button_send_frame.Click += new System.EventHandler(this.button_send_frame_Click);
+            this.button_send_frame.Click += new System.EventHandler(this.button_send_frame_click);
             // 
             // textBox_hex1
             // 
@@ -560,17 +562,17 @@
             this.textBox_hex6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex6_KeyPress);
             this.textBox_hex6.Leave += new System.EventHandler(this.textBox_hex6_Leave);
             // 
-            // groupBox_can_frame_receive
+            // groupBox_can_receive_frame
             // 
-            this.groupBox_can_frame_receive.Controls.Add(this.richTextBox_receive);
-            this.groupBox_can_frame_receive.Location = new System.Drawing.Point(16, 15);
-            this.groupBox_can_frame_receive.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_frame_receive.Name = "groupBox_can_frame_receive";
-            this.groupBox_can_frame_receive.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_frame_receive.Size = new System.Drawing.Size(447, 311);
-            this.groupBox_can_frame_receive.TabIndex = 15;
-            this.groupBox_can_frame_receive.TabStop = false;
-            this.groupBox_can_frame_receive.Text = "Port Status";
+            this.groupBox_can_receive_frame.Controls.Add(this.richTextBox_receive);
+            this.groupBox_can_receive_frame.Location = new System.Drawing.Point(16, 15);
+            this.groupBox_can_receive_frame.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox_can_receive_frame.Name = "groupBox_can_receive_frame";
+            this.groupBox_can_receive_frame.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox_can_receive_frame.Size = new System.Drawing.Size(447, 311);
+            this.groupBox_can_receive_frame.TabIndex = 15;
+            this.groupBox_can_receive_frame.TabStop = false;
+            this.groupBox_can_receive_frame.Text = "Port Status";
             // 
             // richTextBox_receive
             // 
@@ -625,8 +627,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.groupBox_can_frame_receive);
-            this.Controls.Add(this.groupBox_can_frame_transmit);
+            this.Controls.Add(this.groupBox_can_receive_frame);
+            this.Controls.Add(this.groupBox_can_transmit_frame);
             this.Controls.Add(this.groupBox_can_commands);
             this.Controls.Add(this.groupBox_com_port);
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -637,10 +639,10 @@
             this.groupBox_com_port.PerformLayout();
             this.groupBox_can_commands.ResumeLayout(false);
             this.groupBox_can_commands.PerformLayout();
-            this.groupBox_can_frame_transmit.ResumeLayout(false);
-            this.groupBox_can_frame_transmit.PerformLayout();
+            this.groupBox_can_transmit_frame.ResumeLayout(false);
+            this.groupBox_can_transmit_frame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).EndInit();
-            this.groupBox_can_frame_receive.ResumeLayout(false);
+            this.groupBox_can_receive_frame.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -650,50 +652,50 @@
 
         #endregion
 
-        protected System.IO.Ports.SerialPort serialPort;
-        protected System.Windows.Forms.GroupBox groupBox_com_port;
-        protected System.Windows.Forms.Button button_com_close;
-        protected System.Windows.Forms.Button button_com_open;
-        protected System.Windows.Forms.Label label_com_baud_rate;
-        public System.Windows.Forms.ComboBox comboBox_com_baud_rate;
-        protected System.Windows.Forms.GroupBox groupBox_can_commands;
-        protected System.Windows.Forms.Button button_can_close;
-        protected System.Windows.Forms.Button button_can_open;
-        protected System.Windows.Forms.Button button_setup;
-        protected System.Windows.Forms.Label label_bitrate;
-        public System.Windows.Forms.ComboBox comboBox_can_bitrate;
-        protected System.Windows.Forms.GroupBox groupBox_can_frame_transmit;
-        public System.Windows.Forms.TextBox textBox_id;
-        protected System.Windows.Forms.Button button_send_frame;
-        public System.Windows.Forms.TextBox textBox_hex1;
-        public System.Windows.Forms.CheckBox checkBox_rtr;
-        public System.Windows.Forms.TextBox textBox_hex2;
-        public System.Windows.Forms.CheckBox checkBox_ext;
-        public System.Windows.Forms.NumericUpDown numericUpDown_dlc;
-        public System.Windows.Forms.TextBox textBox_hex3;
-        public System.Windows.Forms.TextBox textBox_hex8;
-        public System.Windows.Forms.TextBox textBox_hex4;
-        public System.Windows.Forms.TextBox textBox_hex7;
-        public System.Windows.Forms.TextBox textBox_hex5;
-        public System.Windows.Forms.TextBox textBox_hex6;
-        protected System.Windows.Forms.GroupBox groupBox_can_frame_receive;
-        protected System.Windows.Forms.RichTextBox richTextBox_receive;
-        protected System.Windows.Forms.Button button_can_flags;
-        protected System.Windows.Forms.StatusStrip statusStrip;
-        protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_com_port;
-        protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_baud_rate;
-        protected System.Windows.Forms.Button button_serial_number;
-        protected System.Windows.Forms.Button button_can_version;
-        protected System.Windows.Forms.Label label_result;
-        protected System.Windows.Forms.Label label_data_bytes;
-        protected System.Windows.Forms.Label label_dlc;
-        protected System.Windows.Forms.Label label_can_id;
-        protected System.Windows.Forms.Button button_time_stamp_off;
-        protected System.Windows.Forms.Button button_time_stamp_on;
-        protected System.Windows.Forms.Button button_poll_all;
-        protected System.Windows.Forms.Button button_poll_one;
-        protected System.Windows.Forms.Button button_auto_off;
-        protected System.Windows.Forms.Button button_auto_on;
-        protected System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_msg_counter_received;
+        private System.IO.Ports.SerialPort serialPort;
+        private System.Windows.Forms.GroupBox groupBox_com_port;
+        private System.Windows.Forms.Button button_com_close;
+        private System.Windows.Forms.Button button_com_open;
+        private System.Windows.Forms.Label label_com_baud_rate;
+        private System.Windows.Forms.ComboBox comboBox_com_baud_rate;
+        private System.Windows.Forms.GroupBox groupBox_can_commands;
+        private System.Windows.Forms.Button button_can_close;
+        private System.Windows.Forms.Button button_can_open;
+        private System.Windows.Forms.Button button_setup;
+        private System.Windows.Forms.Label label_bitrate;
+        private System.Windows.Forms.ComboBox comboBox_can_bitrate;
+        private System.Windows.Forms.GroupBox groupBox_can_transmit_frame;
+        private System.Windows.Forms.TextBox textBox_id;
+        private System.Windows.Forms.Button button_send_frame;
+        private System.Windows.Forms.TextBox textBox_hex1;
+        private System.Windows.Forms.CheckBox checkBox_rtr;
+        private System.Windows.Forms.TextBox textBox_hex2;
+        private System.Windows.Forms.CheckBox checkBox_ext;
+        private System.Windows.Forms.NumericUpDown numericUpDown_dlc;
+        private System.Windows.Forms.TextBox textBox_hex3;
+        private System.Windows.Forms.TextBox textBox_hex8;
+        private System.Windows.Forms.TextBox textBox_hex4;
+        private System.Windows.Forms.TextBox textBox_hex7;
+        private System.Windows.Forms.TextBox textBox_hex5;
+        private System.Windows.Forms.TextBox textBox_hex6;
+        private System.Windows.Forms.GroupBox groupBox_can_receive_frame;
+        private System.Windows.Forms.RichTextBox richTextBox_receive;
+        private System.Windows.Forms.Button button_can_flags;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_com_port;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_baud_rate;
+        private System.Windows.Forms.Button button_serial_number;
+        private System.Windows.Forms.Button button_can_version;
+        private System.Windows.Forms.Label label_result;
+        private System.Windows.Forms.Label label_data_bytes;
+        private System.Windows.Forms.Label label_dlc;
+        private System.Windows.Forms.Label label_can_id;
+        private System.Windows.Forms.Button button_time_stamp_off;
+        private System.Windows.Forms.Button button_time_stamp_on;
+        private System.Windows.Forms.Button button_poll_all;
+        private System.Windows.Forms.Button button_poll_one;
+        private System.Windows.Forms.Button button_auto_off;
+        private System.Windows.Forms.Button button_auto_on;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_msg_counter_received;
     }
 }

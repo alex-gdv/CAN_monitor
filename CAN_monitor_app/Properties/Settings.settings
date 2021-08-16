@@ -1,48 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CAN_monitor_app.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="Port_baud_rate_index" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">4</Value>
-    </Setting>
-    <Setting Name="CAN_bitrate_index" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
-    </Setting>
-    <Setting Name="CAN_id" Type="System.String" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
-    <Setting Name="CAN_dlc" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">8</Value>
-    </Setting>
-    <Setting Name="Hex1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex4" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex5" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex6" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex7" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Hex8" Type="System.String" Scope="User">
-      <Value Profile="(Default)">00</Value>
-    </Setting>
-    <Setting Name="Ext_id" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="Rtr" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>
