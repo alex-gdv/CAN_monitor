@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.serialPort = new System.IO.Ports.SerialPort(this.components);
-            this.groupBox_com_port = new System.Windows.Forms.GroupBox();
+            this.serial_port = new System.IO.Ports.SerialPort(this.components);
+            this.group_box_com_port = new System.Windows.Forms.GroupBox();
             this.button_com_close = new System.Windows.Forms.Button();
             this.button_com_open = new System.Windows.Forms.Button();
             this.label_com_baud_rate = new System.Windows.Forms.Label();
-            this.comboBox_com_baud_rate = new System.Windows.Forms.ComboBox();
-            this.groupBox_can_commands = new System.Windows.Forms.GroupBox();
+            this.combo_box_com_baud_rate = new System.Windows.Forms.ComboBox();
+            this.group_box_can_commands = new System.Windows.Forms.GroupBox();
             this.button_auto_off = new System.Windows.Forms.Button();
             this.button_auto_on = new System.Windows.Forms.Button();
             this.button_time_stamp_off = new System.Windows.Forms.Button();
@@ -47,59 +47,59 @@
             this.button_can_flags = new System.Windows.Forms.Button();
             this.button_can_close = new System.Windows.Forms.Button();
             this.button_can_open = new System.Windows.Forms.Button();
-            this.button_setup = new System.Windows.Forms.Button();
+            this.button_can_setup = new System.Windows.Forms.Button();
             this.label_bitrate = new System.Windows.Forms.Label();
-            this.comboBox_can_bitrate = new System.Windows.Forms.ComboBox();
-            this.groupBox_can_transmit_frame = new System.Windows.Forms.GroupBox();
+            this.combo_box_can_bitrate = new System.Windows.Forms.ComboBox();
+            this.group_box_can_transmit_frame = new System.Windows.Forms.GroupBox();
             this.label_data_bytes = new System.Windows.Forms.Label();
             this.label_dlc = new System.Windows.Forms.Label();
             this.label_can_id = new System.Windows.Forms.Label();
             this.label_result = new System.Windows.Forms.Label();
-            this.textBox_id = new System.Windows.Forms.TextBox();
+            this.text_box_id = new System.Windows.Forms.TextBox();
             this.button_send_frame = new System.Windows.Forms.Button();
-            this.textBox_hex1 = new System.Windows.Forms.TextBox();
+            this.text_box_hex1 = new System.Windows.Forms.TextBox();
             this.checkBox_rtr = new System.Windows.Forms.CheckBox();
-            this.textBox_hex2 = new System.Windows.Forms.TextBox();
+            this.text_box_hex2 = new System.Windows.Forms.TextBox();
             this.checkBox_ext = new System.Windows.Forms.CheckBox();
             this.numericUpDown_dlc = new System.Windows.Forms.NumericUpDown();
-            this.textBox_hex3 = new System.Windows.Forms.TextBox();
-            this.textBox_hex8 = new System.Windows.Forms.TextBox();
-            this.textBox_hex4 = new System.Windows.Forms.TextBox();
-            this.textBox_hex7 = new System.Windows.Forms.TextBox();
-            this.textBox_hex5 = new System.Windows.Forms.TextBox();
-            this.textBox_hex6 = new System.Windows.Forms.TextBox();
-            this.groupBox_can_receive_frame = new System.Windows.Forms.GroupBox();
+            this.text_box_hex3 = new System.Windows.Forms.TextBox();
+            this.text_box_hex8 = new System.Windows.Forms.TextBox();
+            this.text_box_hex4 = new System.Windows.Forms.TextBox();
+            this.text_box_hex7 = new System.Windows.Forms.TextBox();
+            this.text_box_hex5 = new System.Windows.Forms.TextBox();
+            this.text_box_hex6 = new System.Windows.Forms.TextBox();
+            this.group_box_can_receive_frame = new System.Windows.Forms.GroupBox();
             this.richTextBox_receive = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_com_port = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_baud_rate = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_msg_counter_received = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox_com_port.SuspendLayout();
-            this.groupBox_can_commands.SuspendLayout();
-            this.groupBox_can_transmit_frame.SuspendLayout();
+            this.group_box_com_port.SuspendLayout();
+            this.group_box_can_commands.SuspendLayout();
+            this.group_box_can_transmit_frame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).BeginInit();
-            this.groupBox_can_receive_frame.SuspendLayout();
+            this.group_box_can_receive_frame.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // serialPort
+            // serial_port
             // 
-            this.serialPort.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort_DataReceived);
+            this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_DataReceived);
             // 
-            // groupBox_com_port
+            // group_box_com_port
             // 
-            this.groupBox_com_port.Controls.Add(this.button_com_close);
-            this.groupBox_com_port.Controls.Add(this.button_com_open);
-            this.groupBox_com_port.Controls.Add(this.label_com_baud_rate);
-            this.groupBox_com_port.Controls.Add(this.comboBox_com_baud_rate);
-            this.groupBox_com_port.Location = new System.Drawing.Point(471, 15);
-            this.groupBox_com_port.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_com_port.Name = "groupBox_com_port";
-            this.groupBox_com_port.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_com_port.Size = new System.Drawing.Size(231, 114);
-            this.groupBox_com_port.TabIndex = 1;
-            this.groupBox_com_port.TabStop = false;
-            this.groupBox_com_port.Text = "COM Port Settings";
+            this.group_box_com_port.Controls.Add(this.button_com_close);
+            this.group_box_com_port.Controls.Add(this.button_com_open);
+            this.group_box_com_port.Controls.Add(this.label_com_baud_rate);
+            this.group_box_com_port.Controls.Add(this.combo_box_com_baud_rate);
+            this.group_box_com_port.Location = new System.Drawing.Point(471, 15);
+            this.group_box_com_port.Margin = new System.Windows.Forms.Padding(4);
+            this.group_box_com_port.Name = "group_box_com_port";
+            this.group_box_com_port.Padding = new System.Windows.Forms.Padding(4);
+            this.group_box_com_port.Size = new System.Drawing.Size(231, 114);
+            this.group_box_com_port.TabIndex = 1;
+            this.group_box_com_port.TabStop = false;
+            this.group_box_com_port.Text = "COM Port Settings";
             // 
             // button_com_close
             // 
@@ -134,48 +134,48 @@
             this.label_com_baud_rate.TabIndex = 16;
             this.label_com_baud_rate.Text = "Baud rate";
             // 
-            // comboBox_com_baud_rate
+            // combo_box_com_baud_rate
             // 
-            this.comboBox_com_baud_rate.FormattingEnabled = true;
-            this.comboBox_com_baud_rate.Items.AddRange(new object[] {
+            this.combo_box_com_baud_rate.FormattingEnabled = true;
+            this.combo_box_com_baud_rate.Items.AddRange(new object[] {
             "2400",
             "9600",
             "19200",
             "38400",
             "57600",
             "115200"});
-            this.comboBox_com_baud_rate.Location = new System.Drawing.Point(123, 46);
-            this.comboBox_com_baud_rate.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox_com_baud_rate.Name = "comboBox_com_baud_rate";
-            this.comboBox_com_baud_rate.Size = new System.Drawing.Size(99, 24);
-            this.comboBox_com_baud_rate.TabIndex = 14;
-            this.comboBox_com_baud_rate.SelectedIndexChanged += new System.EventHandler(this.comboBox_com_baud_rate_SelectedIndexChanged);
+            this.combo_box_com_baud_rate.Location = new System.Drawing.Point(123, 46);
+            this.combo_box_com_baud_rate.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_box_com_baud_rate.Name = "combo_box_com_baud_rate";
+            this.combo_box_com_baud_rate.Size = new System.Drawing.Size(99, 24);
+            this.combo_box_com_baud_rate.TabIndex = 14;
+            this.combo_box_com_baud_rate.SelectedIndexChanged += new System.EventHandler(this.combo_box_com_baud_rate_selected_index_changed);
             // 
-            // groupBox_can_commands
+            // group_box_can_commands
             // 
-            this.groupBox_can_commands.Controls.Add(this.button_auto_off);
-            this.groupBox_can_commands.Controls.Add(this.button_auto_on);
-            this.groupBox_can_commands.Controls.Add(this.button_time_stamp_off);
-            this.groupBox_can_commands.Controls.Add(this.button_time_stamp_on);
-            this.groupBox_can_commands.Controls.Add(this.button_poll_all);
-            this.groupBox_can_commands.Controls.Add(this.button_poll_one);
-            this.groupBox_can_commands.Controls.Add(this.button_serial_number);
-            this.groupBox_can_commands.Controls.Add(this.button_can_version);
-            this.groupBox_can_commands.Controls.Add(this.button_can_flags);
-            this.groupBox_can_commands.Controls.Add(this.button_can_close);
-            this.groupBox_can_commands.Controls.Add(this.button_can_open);
-            this.groupBox_can_commands.Controls.Add(this.button_setup);
-            this.groupBox_can_commands.Controls.Add(this.label_bitrate);
-            this.groupBox_can_commands.Controls.Add(this.comboBox_can_bitrate);
-            this.groupBox_can_commands.Enabled = false;
-            this.groupBox_can_commands.Location = new System.Drawing.Point(471, 137);
-            this.groupBox_can_commands.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_commands.Name = "groupBox_can_commands";
-            this.groupBox_can_commands.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_commands.Size = new System.Drawing.Size(231, 370);
-            this.groupBox_can_commands.TabIndex = 2;
-            this.groupBox_can_commands.TabStop = false;
-            this.groupBox_can_commands.Text = "CAN Commands";
+            this.group_box_can_commands.Controls.Add(this.button_auto_off);
+            this.group_box_can_commands.Controls.Add(this.button_auto_on);
+            this.group_box_can_commands.Controls.Add(this.button_time_stamp_off);
+            this.group_box_can_commands.Controls.Add(this.button_time_stamp_on);
+            this.group_box_can_commands.Controls.Add(this.button_poll_all);
+            this.group_box_can_commands.Controls.Add(this.button_poll_one);
+            this.group_box_can_commands.Controls.Add(this.button_serial_number);
+            this.group_box_can_commands.Controls.Add(this.button_can_version);
+            this.group_box_can_commands.Controls.Add(this.button_can_flags);
+            this.group_box_can_commands.Controls.Add(this.button_can_close);
+            this.group_box_can_commands.Controls.Add(this.button_can_open);
+            this.group_box_can_commands.Controls.Add(this.button_can_setup);
+            this.group_box_can_commands.Controls.Add(this.label_bitrate);
+            this.group_box_can_commands.Controls.Add(this.combo_box_can_bitrate);
+            this.group_box_can_commands.Enabled = false;
+            this.group_box_can_commands.Location = new System.Drawing.Point(471, 137);
+            this.group_box_can_commands.Margin = new System.Windows.Forms.Padding(4);
+            this.group_box_can_commands.Name = "group_box_can_commands";
+            this.group_box_can_commands.Padding = new System.Windows.Forms.Padding(4);
+            this.group_box_can_commands.Size = new System.Drawing.Size(231, 370);
+            this.group_box_can_commands.TabIndex = 2;
+            this.group_box_can_commands.TabStop = false;
+            this.group_box_can_commands.Text = "CAN Commands";
             // 
             // button_auto_off
             // 
@@ -298,16 +298,16 @@
             this.button_can_open.UseVisualStyleBackColor = true;
             this.button_can_open.Click += new System.EventHandler(this.button_can_open_click);
             // 
-            // button_setup
+            // button_can_setup
             // 
-            this.button_setup.Location = new System.Drawing.Point(123, 42);
-            this.button_setup.Margin = new System.Windows.Forms.Padding(4);
-            this.button_setup.Name = "button_setup";
-            this.button_setup.Size = new System.Drawing.Size(100, 28);
-            this.button_setup.TabIndex = 18;
-            this.button_setup.Text = "Setup";
-            this.button_setup.UseVisualStyleBackColor = true;
-            this.button_setup.Click += new System.EventHandler(this.button_setup_click);
+            this.button_can_setup.Location = new System.Drawing.Point(123, 42);
+            this.button_can_setup.Margin = new System.Windows.Forms.Padding(4);
+            this.button_can_setup.Name = "button_can_setup";
+            this.button_can_setup.Size = new System.Drawing.Size(100, 28);
+            this.button_can_setup.TabIndex = 18;
+            this.button_can_setup.Text = "Setup";
+            this.button_can_setup.UseVisualStyleBackColor = true;
+            this.button_can_setup.Click += new System.EventHandler(this.button_can_setup_click);
             // 
             // label_bitrate
             // 
@@ -319,10 +319,10 @@
             this.label_bitrate.TabIndex = 17;
             this.label_bitrate.Text = "Bitrate";
             // 
-            // comboBox_can_bitrate
+            // combo_box_can_bitrate
             // 
-            this.comboBox_can_bitrate.FormattingEnabled = true;
-            this.comboBox_can_bitrate.Items.AddRange(new object[] {
+            this.combo_box_can_bitrate.FormattingEnabled = true;
+            this.combo_box_can_bitrate.Items.AddRange(new object[] {
             "10Kbit",
             "20Kbit",
             "50Kbit",
@@ -332,41 +332,41 @@
             "500Kbit",
             "800Kbit",
             "1Mbit"});
-            this.comboBox_can_bitrate.Location = new System.Drawing.Point(8, 44);
-            this.comboBox_can_bitrate.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox_can_bitrate.Name = "comboBox_can_bitrate";
-            this.comboBox_can_bitrate.Size = new System.Drawing.Size(99, 24);
-            this.comboBox_can_bitrate.TabIndex = 16;
-            this.comboBox_can_bitrate.SelectedIndexChanged += new System.EventHandler(this.comboBox_can_bitrate_SelectedIndexChanged);
+            this.combo_box_can_bitrate.Location = new System.Drawing.Point(8, 44);
+            this.combo_box_can_bitrate.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_box_can_bitrate.Name = "combo_box_can_bitrate";
+            this.combo_box_can_bitrate.Size = new System.Drawing.Size(99, 24);
+            this.combo_box_can_bitrate.TabIndex = 16;
+            this.combo_box_can_bitrate.SelectedIndexChanged += new System.EventHandler(this.combo_box_can_bitrate_selected_index_changed);
             // 
-            // groupBox_can_transmit_frame
+            // group_box_can_transmit_frame
             // 
-            this.groupBox_can_transmit_frame.Controls.Add(this.label_data_bytes);
-            this.groupBox_can_transmit_frame.Controls.Add(this.label_dlc);
-            this.groupBox_can_transmit_frame.Controls.Add(this.label_can_id);
-            this.groupBox_can_transmit_frame.Controls.Add(this.label_result);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_id);
-            this.groupBox_can_transmit_frame.Controls.Add(this.button_send_frame);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex1);
-            this.groupBox_can_transmit_frame.Controls.Add(this.checkBox_rtr);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex2);
-            this.groupBox_can_transmit_frame.Controls.Add(this.checkBox_ext);
-            this.groupBox_can_transmit_frame.Controls.Add(this.numericUpDown_dlc);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex3);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex8);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex4);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex7);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex5);
-            this.groupBox_can_transmit_frame.Controls.Add(this.textBox_hex6);
-            this.groupBox_can_transmit_frame.Enabled = false;
-            this.groupBox_can_transmit_frame.Location = new System.Drawing.Point(16, 334);
-            this.groupBox_can_transmit_frame.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_transmit_frame.Name = "groupBox_can_transmit_frame";
-            this.groupBox_can_transmit_frame.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_transmit_frame.Size = new System.Drawing.Size(447, 174);
-            this.groupBox_can_transmit_frame.TabIndex = 14;
-            this.groupBox_can_transmit_frame.TabStop = false;
-            this.groupBox_can_transmit_frame.Text = "CAN Transmit Frame (HEX)";
+            this.group_box_can_transmit_frame.Controls.Add(this.label_data_bytes);
+            this.group_box_can_transmit_frame.Controls.Add(this.label_dlc);
+            this.group_box_can_transmit_frame.Controls.Add(this.label_can_id);
+            this.group_box_can_transmit_frame.Controls.Add(this.label_result);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_id);
+            this.group_box_can_transmit_frame.Controls.Add(this.button_send_frame);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex1);
+            this.group_box_can_transmit_frame.Controls.Add(this.checkBox_rtr);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex2);
+            this.group_box_can_transmit_frame.Controls.Add(this.checkBox_ext);
+            this.group_box_can_transmit_frame.Controls.Add(this.numericUpDown_dlc);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex3);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex8);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex4);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex7);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex5);
+            this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex6);
+            this.group_box_can_transmit_frame.Enabled = false;
+            this.group_box_can_transmit_frame.Location = new System.Drawing.Point(16, 334);
+            this.group_box_can_transmit_frame.Margin = new System.Windows.Forms.Padding(4);
+            this.group_box_can_transmit_frame.Name = "group_box_can_transmit_frame";
+            this.group_box_can_transmit_frame.Padding = new System.Windows.Forms.Padding(4);
+            this.group_box_can_transmit_frame.Size = new System.Drawing.Size(447, 174);
+            this.group_box_can_transmit_frame.TabIndex = 14;
+            this.group_box_can_transmit_frame.TabStop = false;
+            this.group_box_can_transmit_frame.Text = "CAN Transmit Frame (HEX)";
             // 
             // label_data_bytes
             // 
@@ -408,16 +408,16 @@
             this.label_result.TabIndex = 13;
             this.label_result.Text = "Resulting command: t10080000000000000000[CR]";
             // 
-            // textBox_id
+            // text_box_id
             // 
-            this.textBox_id.Location = new System.Drawing.Point(8, 50);
-            this.textBox_id.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_id.Name = "textBox_id";
-            this.textBox_id.Size = new System.Drawing.Size(79, 22);
-            this.textBox_id.TabIndex = 0;
-            this.textBox_id.Text = "100";
-            this.textBox_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_id_KeyPress);
-            this.textBox_id.Leave += new System.EventHandler(this.textBox_id_Leave);
+            this.text_box_id.Location = new System.Drawing.Point(8, 50);
+            this.text_box_id.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_id.Name = "text_box_id";
+            this.text_box_id.Size = new System.Drawing.Size(79, 22);
+            this.text_box_id.TabIndex = 0;
+            this.text_box_id.Text = "100";
+            this.text_box_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_id_KeyPress);
+            this.text_box_id.Leave += new System.EventHandler(this.text_box_id_Leave);
             // 
             // button_send_frame
             // 
@@ -430,16 +430,16 @@
             this.button_send_frame.UseVisualStyleBackColor = true;
             this.button_send_frame.Click += new System.EventHandler(this.button_send_frame_click);
             // 
-            // textBox_hex1
+            // text_box_hex1
             // 
-            this.textBox_hex1.Location = new System.Drawing.Point(144, 50);
-            this.textBox_hex1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex1.Name = "textBox_hex1";
-            this.textBox_hex1.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex1.TabIndex = 2;
-            this.textBox_hex1.Text = "00";
-            this.textBox_hex1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex1_KeyPress);
-            this.textBox_hex1.Leave += new System.EventHandler(this.textBox_hex1_Leave);
+            this.text_box_hex1.Location = new System.Drawing.Point(144, 50);
+            this.text_box_hex1.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex1.Name = "text_box_hex1";
+            this.text_box_hex1.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex1.TabIndex = 2;
+            this.text_box_hex1.Text = "00";
+            this.text_box_hex1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex1_KeyPress);
+            this.text_box_hex1.Leave += new System.EventHandler(this.text_box_hex1_Leave);
             // 
             // checkBox_rtr
             // 
@@ -453,16 +453,16 @@
             this.checkBox_rtr.UseVisualStyleBackColor = true;
             this.checkBox_rtr.CheckedChanged += new System.EventHandler(this.checkBox_rtr_CheckedChanged);
             // 
-            // textBox_hex2
+            // text_box_hex2
             // 
-            this.textBox_hex2.Location = new System.Drawing.Point(181, 50);
-            this.textBox_hex2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex2.Name = "textBox_hex2";
-            this.textBox_hex2.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex2.TabIndex = 3;
-            this.textBox_hex2.Text = "00";
-            this.textBox_hex2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex2_KeyPress);
-            this.textBox_hex2.Leave += new System.EventHandler(this.textBox_hex2_Leave);
+            this.text_box_hex2.Location = new System.Drawing.Point(181, 50);
+            this.text_box_hex2.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex2.Name = "text_box_hex2";
+            this.text_box_hex2.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex2.TabIndex = 3;
+            this.text_box_hex2.Text = "00";
+            this.text_box_hex2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex2_KeyPress);
+            this.text_box_hex2.Leave += new System.EventHandler(this.text_box_hex2_Leave);
             // 
             // checkBox_ext
             // 
@@ -496,83 +496,83 @@
             0});
             this.numericUpDown_dlc.ValueChanged += new System.EventHandler(this.numericUpDown_dlc_ValueChanged);
             // 
-            // textBox_hex3
+            // text_box_hex3
             // 
-            this.textBox_hex3.Location = new System.Drawing.Point(219, 50);
-            this.textBox_hex3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex3.Name = "textBox_hex3";
-            this.textBox_hex3.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex3.TabIndex = 4;
-            this.textBox_hex3.Text = "00";
-            this.textBox_hex3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex3_KeyPress);
-            this.textBox_hex3.Leave += new System.EventHandler(this.textBox_hex3_Leave);
+            this.text_box_hex3.Location = new System.Drawing.Point(219, 50);
+            this.text_box_hex3.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex3.Name = "text_box_hex3";
+            this.text_box_hex3.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex3.TabIndex = 4;
+            this.text_box_hex3.Text = "00";
+            this.text_box_hex3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex3_KeyPress);
+            this.text_box_hex3.Leave += new System.EventHandler(this.text_box_hex3_Leave);
             // 
-            // textBox_hex8
+            // text_box_hex8
             // 
-            this.textBox_hex8.Location = new System.Drawing.Point(405, 50);
-            this.textBox_hex8.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex8.Name = "textBox_hex8";
-            this.textBox_hex8.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex8.TabIndex = 9;
-            this.textBox_hex8.Text = "00";
-            this.textBox_hex8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex8_KeyPress);
-            this.textBox_hex8.Leave += new System.EventHandler(this.textBox_hex8_Leave);
+            this.text_box_hex8.Location = new System.Drawing.Point(405, 50);
+            this.text_box_hex8.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex8.Name = "text_box_hex8";
+            this.text_box_hex8.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex8.TabIndex = 9;
+            this.text_box_hex8.Text = "00";
+            this.text_box_hex8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex8_KeyPress);
+            this.text_box_hex8.Leave += new System.EventHandler(this.text_box_hex8_Leave);
             // 
-            // textBox_hex4
+            // text_box_hex4
             // 
-            this.textBox_hex4.Location = new System.Drawing.Point(256, 50);
-            this.textBox_hex4.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex4.Name = "textBox_hex4";
-            this.textBox_hex4.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex4.TabIndex = 5;
-            this.textBox_hex4.Text = "00";
-            this.textBox_hex4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex4_KeyPress);
-            this.textBox_hex4.Leave += new System.EventHandler(this.textBox_hex4_Leave);
+            this.text_box_hex4.Location = new System.Drawing.Point(256, 50);
+            this.text_box_hex4.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex4.Name = "text_box_hex4";
+            this.text_box_hex4.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex4.TabIndex = 5;
+            this.text_box_hex4.Text = "00";
+            this.text_box_hex4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex4_KeyPress);
+            this.text_box_hex4.Leave += new System.EventHandler(this.text_box_hex4_Leave);
             // 
-            // textBox_hex7
+            // text_box_hex7
             // 
-            this.textBox_hex7.Location = new System.Drawing.Point(368, 50);
-            this.textBox_hex7.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex7.Name = "textBox_hex7";
-            this.textBox_hex7.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex7.TabIndex = 8;
-            this.textBox_hex7.Text = "00";
-            this.textBox_hex7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex7_KeyPress);
-            this.textBox_hex7.Leave += new System.EventHandler(this.textBox_hex7_Leave);
+            this.text_box_hex7.Location = new System.Drawing.Point(368, 50);
+            this.text_box_hex7.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex7.Name = "text_box_hex7";
+            this.text_box_hex7.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex7.TabIndex = 8;
+            this.text_box_hex7.Text = "00";
+            this.text_box_hex7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex7_KeyPress);
+            this.text_box_hex7.Leave += new System.EventHandler(this.text_box_hex7_Leave);
             // 
-            // textBox_hex5
+            // text_box_hex5
             // 
-            this.textBox_hex5.Location = new System.Drawing.Point(293, 50);
-            this.textBox_hex5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex5.Name = "textBox_hex5";
-            this.textBox_hex5.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex5.TabIndex = 6;
-            this.textBox_hex5.Text = "00";
-            this.textBox_hex5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex5_KeyPress);
-            this.textBox_hex5.Leave += new System.EventHandler(this.textBox_hex5_Leave);
+            this.text_box_hex5.Location = new System.Drawing.Point(293, 50);
+            this.text_box_hex5.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex5.Name = "text_box_hex5";
+            this.text_box_hex5.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex5.TabIndex = 6;
+            this.text_box_hex5.Text = "00";
+            this.text_box_hex5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex5_KeyPress);
+            this.text_box_hex5.Leave += new System.EventHandler(this.text_box_hex5_Leave);
             // 
-            // textBox_hex6
+            // text_box_hex6
             // 
-            this.textBox_hex6.Location = new System.Drawing.Point(331, 50);
-            this.textBox_hex6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox_hex6.Name = "textBox_hex6";
-            this.textBox_hex6.Size = new System.Drawing.Size(28, 22);
-            this.textBox_hex6.TabIndex = 7;
-            this.textBox_hex6.Text = "00";
-            this.textBox_hex6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_hex6_KeyPress);
-            this.textBox_hex6.Leave += new System.EventHandler(this.textBox_hex6_Leave);
+            this.text_box_hex6.Location = new System.Drawing.Point(331, 50);
+            this.text_box_hex6.Margin = new System.Windows.Forms.Padding(4);
+            this.text_box_hex6.Name = "text_box_hex6";
+            this.text_box_hex6.Size = new System.Drawing.Size(28, 22);
+            this.text_box_hex6.TabIndex = 7;
+            this.text_box_hex6.Text = "00";
+            this.text_box_hex6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex6_KeyPress);
+            this.text_box_hex6.Leave += new System.EventHandler(this.text_box_hex6_Leave);
             // 
-            // groupBox_can_receive_frame
+            // group_box_can_receive_frame
             // 
-            this.groupBox_can_receive_frame.Controls.Add(this.richTextBox_receive);
-            this.groupBox_can_receive_frame.Location = new System.Drawing.Point(16, 15);
-            this.groupBox_can_receive_frame.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_receive_frame.Name = "groupBox_can_receive_frame";
-            this.groupBox_can_receive_frame.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox_can_receive_frame.Size = new System.Drawing.Size(447, 311);
-            this.groupBox_can_receive_frame.TabIndex = 15;
-            this.groupBox_can_receive_frame.TabStop = false;
-            this.groupBox_can_receive_frame.Text = "Port Status";
+            this.group_box_can_receive_frame.Controls.Add(this.richTextBox_receive);
+            this.group_box_can_receive_frame.Location = new System.Drawing.Point(16, 15);
+            this.group_box_can_receive_frame.Margin = new System.Windows.Forms.Padding(4);
+            this.group_box_can_receive_frame.Name = "group_box_can_receive_frame";
+            this.group_box_can_receive_frame.Padding = new System.Windows.Forms.Padding(4);
+            this.group_box_can_receive_frame.Size = new System.Drawing.Size(447, 311);
+            this.group_box_can_receive_frame.TabIndex = 15;
+            this.group_box_can_receive_frame.TabStop = false;
+            this.group_box_can_receive_frame.Text = "Port Status";
             // 
             // richTextBox_receive
             // 
@@ -627,22 +627,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.groupBox_can_receive_frame);
-            this.Controls.Add(this.groupBox_can_transmit_frame);
-            this.Controls.Add(this.groupBox_can_commands);
-            this.Controls.Add(this.groupBox_com_port);
+            this.Controls.Add(this.group_box_can_receive_frame);
+            this.Controls.Add(this.group_box_can_transmit_frame);
+            this.Controls.Add(this.group_box_can_commands);
+            this.Controls.Add(this.group_box_com_port);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CAN_monitor";
             this.Size = new System.Drawing.Size(719, 554);
-            this.Load += new System.EventHandler(this.CAN_Monitor_Load);
-            this.groupBox_com_port.ResumeLayout(false);
-            this.groupBox_com_port.PerformLayout();
-            this.groupBox_can_commands.ResumeLayout(false);
-            this.groupBox_can_commands.PerformLayout();
-            this.groupBox_can_transmit_frame.ResumeLayout(false);
-            this.groupBox_can_transmit_frame.PerformLayout();
+            this.group_box_com_port.ResumeLayout(false);
+            this.group_box_com_port.PerformLayout();
+            this.group_box_can_commands.ResumeLayout(false);
+            this.group_box_can_commands.PerformLayout();
+            this.group_box_can_transmit_frame.ResumeLayout(false);
+            this.group_box_can_transmit_frame.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).EndInit();
-            this.groupBox_can_receive_frame.ResumeLayout(false);
+            this.group_box_can_receive_frame.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -652,33 +651,33 @@
 
         #endregion
 
-        private System.IO.Ports.SerialPort serialPort;
-        private System.Windows.Forms.GroupBox groupBox_com_port;
+        private System.IO.Ports.SerialPort serial_port;
+        private System.Windows.Forms.GroupBox group_box_com_port;
         private System.Windows.Forms.Button button_com_close;
         private System.Windows.Forms.Button button_com_open;
         private System.Windows.Forms.Label label_com_baud_rate;
-        private System.Windows.Forms.ComboBox comboBox_com_baud_rate;
-        private System.Windows.Forms.GroupBox groupBox_can_commands;
+        private System.Windows.Forms.ComboBox combo_box_com_baud_rate;
+        private System.Windows.Forms.GroupBox group_box_can_commands;
         private System.Windows.Forms.Button button_can_close;
         private System.Windows.Forms.Button button_can_open;
-        private System.Windows.Forms.Button button_setup;
+        private System.Windows.Forms.Button button_can_setup;
         private System.Windows.Forms.Label label_bitrate;
-        private System.Windows.Forms.ComboBox comboBox_can_bitrate;
-        private System.Windows.Forms.GroupBox groupBox_can_transmit_frame;
-        private System.Windows.Forms.TextBox textBox_id;
+        private System.Windows.Forms.ComboBox combo_box_can_bitrate;
+        private System.Windows.Forms.GroupBox group_box_can_transmit_frame;
+        private System.Windows.Forms.TextBox text_box_id;
         private System.Windows.Forms.Button button_send_frame;
-        private System.Windows.Forms.TextBox textBox_hex1;
+        private System.Windows.Forms.TextBox text_box_hex1;
         private System.Windows.Forms.CheckBox checkBox_rtr;
-        private System.Windows.Forms.TextBox textBox_hex2;
+        private System.Windows.Forms.TextBox text_box_hex2;
         private System.Windows.Forms.CheckBox checkBox_ext;
         private System.Windows.Forms.NumericUpDown numericUpDown_dlc;
-        private System.Windows.Forms.TextBox textBox_hex3;
-        private System.Windows.Forms.TextBox textBox_hex8;
-        private System.Windows.Forms.TextBox textBox_hex4;
-        private System.Windows.Forms.TextBox textBox_hex7;
-        private System.Windows.Forms.TextBox textBox_hex5;
-        private System.Windows.Forms.TextBox textBox_hex6;
-        private System.Windows.Forms.GroupBox groupBox_can_receive_frame;
+        private System.Windows.Forms.TextBox text_box_hex3;
+        private System.Windows.Forms.TextBox text_box_hex8;
+        private System.Windows.Forms.TextBox text_box_hex4;
+        private System.Windows.Forms.TextBox text_box_hex7;
+        private System.Windows.Forms.TextBox text_box_hex5;
+        private System.Windows.Forms.TextBox text_box_hex6;
+        private System.Windows.Forms.GroupBox group_box_can_receive_frame;
         private System.Windows.Forms.RichTextBox richTextBox_receive;
         private System.Windows.Forms.Button button_can_flags;
         private System.Windows.Forms.StatusStrip statusStrip;
