@@ -9,6 +9,7 @@ namespace CAN_monitor_app
 {
     public partial class Menu : Form
     {
+        private string PATH = System.IO.Directory.GetCurrentDirectory() + "//monitor_data.xml";
         private List<CAN_monitor> active_can_monitors_lst;
         private List<string> active_ports_lst;
         private List<string> available_ports_lst;
@@ -28,6 +29,12 @@ namespace CAN_monitor_app
             InitializeComponent();
             combo_box_com_baud_rate.SelectedIndex = 4;
             combo_box_can_bitrate.SelectedIndex = 5;
+        }
+
+        private void add_available_port(string s)
+        {
+            available_ports_lst.Add(s);
+            combo_box_com_ports.Items.Add(s);
         }
 
         public void remove_available_port(string s)
@@ -107,13 +114,12 @@ namespace CAN_monitor_app
                     list_view.Items.Add(item);
                 }
             }
-            // Update lists
+            // Check if there are new available ports
             foreach (string port_name in System.IO.Ports.SerialPort.GetPortNames())
             {
                 if (!active_ports_lst.Contains(port_name) && !available_ports_lst.Contains(port_name))
                 {
-                    combo_box_com_ports.Items.Add(port_name);
-                    available_ports_lst.Add(port_name);
+                    add_available_port(port_name);
                 }
             }
             // Check if any available port has been disconnected
@@ -168,20 +174,16 @@ namespace CAN_monitor_app
             // Load available ports
             foreach (string port_name in System.IO.Ports.SerialPort.GetPortNames())
             {
-                combo_box_com_ports.Items.Add(port_name);
-                available_ports_lst.Add(port_name);
+                add_available_port(port_name);
             }
             if (combo_box_com_ports.SelectedItem != null)
             {
                 combo_box_com_ports.SelectedIndex = 0;
             }
             // Load CAN_monitor data from previous execution
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                + "//monitor_data.xml";
-            if (System.IO.File.Exists(path))
+            if (System.IO.File.Exists(PATH))
             {
-                System.IO.FileStream file = System.IO.File.Open(path, System.IO.FileMode.Open,
-                    System.IO.FileAccess.Read, System.IO.FileShare.Delete);
+                System.IO.FileStream file = System.IO.File.Open(PATH, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Delete);
                 List<CAN_monitor_attributes> can_monitor_attributes_lst = new List<CAN_monitor_attributes>();
                 XmlSerializer reader = new XmlSerializer(can_monitor_attributes_lst.GetType());
                 can_monitor_attributes_lst = (List<CAN_monitor_attributes>) reader.Deserialize(file);
@@ -219,15 +221,11 @@ namespace CAN_monitor_app
                 Tuple<string, bool, string, bool, string> temp_attributes = can_monitor.get_attributes();
                 CAN_monitor_attributes temp = new CAN_monitor_attributes(temp_attributes.Item1, temp_attributes.Item2, temp_attributes.Item3, temp_attributes.Item4, temp_attributes.Item5);
                 can_monitor_attributes_lst.Add(temp);
-                can_monitor.button_can_close_click(sender, e);
                 can_monitor.button_com_close_click(sender, e);
             }
             XmlSerializer writer
                 = new XmlSerializer(can_monitor_attributes_lst.GetType());
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-                + "//monitor_data.xml";
-            System.IO.FileStream file = System.IO.File.Open(path, System.IO.FileMode.Create,
-                System.IO.FileAccess.Write, System.IO.FileShare.None);
+            System.IO.FileStream file = System.IO.File.Open(PATH, System.IO.FileMode.Create, System.IO.FileAccess.Write, System.IO.FileShare.None);
             writer.Serialize(file, can_monitor_attributes_lst);
             file.Close();
         }
@@ -235,28 +233,16 @@ namespace CAN_monitor_app
         private void button_close_tab_click(object sender, EventArgs e)
         {
             String name = tab_control.SelectedTab.Text;
-            for (int i = active_can_monitors_lst.Count - 1; i >= 0; i--)
-            {
-                if (active_can_monitors_lst[i].get_port_name() == name)
-                {
-                    // Close port
-                    active_can_monitors_lst[i].button_can_close_click(sender, e);
-                    active_can_monitors_lst[i].button_com_close_click(sender, e);
-                    // Update lists
-                    active_can_monitors_lst.RemoveAt(i);
-                    active_ports_lst.Remove(name);
-                    available_ports_lst.Add(name);
-                    // Update interface
-                    combo_box_com_ports.Items.Add(name);
-                    foreach (ListViewItem item in list_view.Items)
-                    {
-                        if (item.SubItems[0].Text == name)
-                        {
-                            list_view.Items.Remove(item);
-                        }
-                    }
-                }
-            }
+            int index = tab_control.SelectedIndex-1;
+            // Close port
+            active_can_monitors_lst[index].button_com_close_click(sender, e);
+            // Update lists
+            active_can_monitors_lst.RemoveAt(index);
+            Console.WriteLine(index);
+            active_ports_lst.Remove(name);
+            add_available_port(name);
+            // Update interface
+            list_view.Items.RemoveAt(index);
             tab_control.TabPages.Remove(tab_control.SelectedTab);
         }
 
@@ -302,7 +288,6 @@ namespace CAN_monitor_app
             {
                 disconnected_ports_lst.Add(can_monitor.get_port_name());
             }
-            combo_box_com_ports.Items.Remove(combo_box_com_ports.SelectedItem);
         }
 
         private void button_add_new_tab_click(object sender, EventArgs e)
@@ -328,7 +313,9 @@ namespace CAN_monitor_app
         public void button_com_close_click(object sender, EventArgs e)
         {
             foreach (CAN_monitor can_monitor in active_can_monitors_lst)
+            {
                 can_monitor.button_com_close_click(sender, e);
+            }
         }
 
         public void button_can_setup_click(object sender, EventArgs e)
@@ -344,13 +331,17 @@ namespace CAN_monitor_app
         public void button_can_open_click(object sender, EventArgs e)
         {
             foreach (CAN_monitor can_monitor in active_can_monitors_lst)
+            {
                 can_monitor.button_can_open_click(sender, e);
+            }
         }
 
         public void button_can_close_click(object sender, EventArgs e)
         {
             foreach (CAN_monitor can_monitor in active_can_monitors_lst)
+            {
                 can_monitor.button_can_close_click(sender, e);
+            }
         }
 
         private void timer_send_tick(object sender, EventArgs e)
@@ -383,7 +374,7 @@ namespace CAN_monitor_app
 
     /// <summary>
     /// The class <c>CAN_monitor_attributes</c> is necessary to store the key variables of <c>CAN_monitor</c> instances using an XML Serializer.
-    /// The class <c>CAN_monitor</c> cannot be used with an XML Serializer as at least one of its members is an interface.
+    /// The class <c>CAN_monitor</c> cannot be used with an XML Serializer because at least one of its members is an interface.
     /// </summary>
     public class CAN_monitor_attributes
     {

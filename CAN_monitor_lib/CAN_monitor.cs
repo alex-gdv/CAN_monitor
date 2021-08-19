@@ -125,9 +125,34 @@ namespace CAN_monitor_lib
                     toolStripStatusLabel_baud_rate.Text = serial_port.BaudRate.ToString();
                     toolStripStatusLabel_msg_counter_received.Text = "0";
                 }
-                else
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void button_com_close_click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serial_port.IsOpen)
                 {
-                    richTextBox_receive.Text = "Failed to open COM port";
+                    // Close CAN bus connection, then close port
+                    if (can_is_open)
+                    {
+                        button_can_close_click(sender, e);
+                    }
+                    serial_port.Close();
+                    com_is_open = false;
+                    // Update interface
+                    toolStripStatusLabel_com_port.Text = "Closed";
+                    toolStripStatusLabel_baud_rate.Text = "-";
+                    group_box_can_commands.Enabled = false;
+                    group_box_can_transmit_frame.Enabled = false;
+                    button_com_close.Enabled = false;
+                    button_com_open.Enabled = true;
+                    combo_box_com_baud_rate.Enabled = true;
                 }
             }
             catch (Exception ex)
@@ -136,7 +161,128 @@ namespace CAN_monitor_lib
             }
         }
 
-        private void CheckHexValue(object sender, KeyPressEventArgs e, int maxLen)
+        public void button_can_open_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("O\r");
+                can_is_open = true;
+            }
+        }
+
+        public void button_can_close_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("C\r");
+                can_is_open = false;
+            }
+        }
+
+        public void set_can_bitrate(string s)
+        {
+            can_bitrate = s;
+        }
+
+        private void combo_box_can_bitrate_selected_index_changed(object sender, EventArgs e)
+        {
+            can_bitrate = combo_box_can_bitrate.SelectedIndex.ToString();
+        }
+
+        public void button_can_setup_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("S");
+                serial_port.Write(can_bitrate);
+                serial_port.Write("\r");
+            }
+        }
+
+        public void button_can_version_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("V\r");
+            }
+        }
+
+        public void button_can_flags_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("F\r");
+            }
+        }
+
+        public void button_serial_number_click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                serial_port.Write("N\r");
+            }
+        }
+
+        private void increase_msg_counter_received()
+        {
+            msg_counter_received++;
+            toolStripStatusLabel_msg_counter_received.Text = "Counter: " + msg_counter_received.ToString();
+        }
+
+        private void serial_port_data_received(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            receive_buffer = serial_port.ReadExisting();
+            try
+            {
+                this.BeginInvoke(new EventHandler(display_text));
+            }
+            catch (System.InvalidOperationException)
+            {
+                System.Threading.Thread.Sleep(1000);
+            }
+            catch (System.TimeoutException ex)
+            {
+                MessageBox.Show(serial_port.PortName + ": " + ex.Message);
+            }
+        }
+
+        private void display_text(object s, EventArgs e)
+        {
+            int buff_len = receive_buffer.Length;
+            int buff_pos = -1;
+            int c = ' ';
+            if (buff_len > 1)
+            {
+                // More than one character
+                if ((buff_pos = receive_buffer.IndexOf("\r")) >= 0)
+                {
+                    richTextBox_receive.AppendText(receive_buffer.Substring(0, buff_pos));
+                    richTextBox_receive.AppendText("[CR]");
+                    richTextBox_receive.AppendText(receive_buffer.Substring(buff_pos, (buff_len - buff_pos)));
+                    increase_msg_counter_received();
+                }
+                else
+                {
+                    richTextBox_receive.AppendText(receive_buffer);
+                }
+            }
+            else if (buff_len == 1)
+            {
+                // Only one character
+                c = receive_buffer[0];
+                if (c == 13)
+                {
+                    richTextBox_receive.AppendText("[CR]");
+                    richTextBox_receive.AppendText(receive_buffer);
+                }
+                else if (c == 7)
+                {
+                    richTextBox_receive.AppendText("[BELL]\n");
+                }
+            }
+        }
+
+        private void check_hex_value(object sender, KeyPressEventArgs e, int maxLen)
         {
             if ((sender as TextBox).TextLength < maxLen)
             {
@@ -167,283 +313,61 @@ namespace CAN_monitor_lib
             }
         }
 
-        private void UpdateDataBoxes()
+        private void text_box_id_key_press(object sender, KeyPressEventArgs e)
         {
-            if (numericUpDown_dlc.Value < 8)
+            if (check_box_ext.Checked == true)
             {
-                text_box_hex8.Visible = false;
+                check_hex_value(sender, e, 8);
             }
             else
             {
-                text_box_hex8.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 7)
-            {
-                text_box_hex7.Visible = false;
-            }
-            else
-            {
-                text_box_hex7.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 6)
-            {
-                text_box_hex6.Visible = false;
-            }
-            else
-            {
-                text_box_hex6.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 5)
-            {
-                text_box_hex5.Visible = false;
-            }
-            else
-            {
-                text_box_hex5.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 4)
-            {
-                text_box_hex4.Visible = false;
-            }
-            else
-            {
-                text_box_hex4.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 3)
-            {
-                text_box_hex3.Visible = false;
-            }
-            else
-            {
-                text_box_hex3.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 2)
-            {
-                text_box_hex2.Visible = false;
-            }
-            else
-            {
-                text_box_hex2.Visible = true;
-            }
-
-            if (numericUpDown_dlc.Value < 1)
-            {
-                text_box_hex1.Visible = false;
-            }
-            else
-            {
-                text_box_hex1.Visible = true;
+                check_hex_value(sender, e, 3);
             }
         }
 
-        public virtual void button_com_close_click(object sender, EventArgs e)
+        private void text_box_hex1_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                button_can_close_click(sender, e);
-                com_is_open = false;
-                serial_port.Close();
-                toolStripStatusLabel_com_port.Text = "Closed";
-                toolStripStatusLabel_baud_rate.Text = "-";
-                group_box_can_commands.Enabled = false;
-                group_box_can_transmit_frame.Enabled = false;
-                button_com_close.Enabled = false;
-                button_com_open.Enabled = true;
-                combo_box_com_baud_rate.Enabled = true;
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_can_open_click(object sender, EventArgs e)
+        private void text_box_hex2_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                can_is_open = true;
-                serial_port.Write("O\r");
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_can_close_click(object sender, EventArgs e)
+        private void text_box_hex3_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                can_is_open = false;
-                serial_port.Write("C\r");
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public void set_can_bitrate(string s)
+        private void text_box_hex4_key_press(object sender, KeyPressEventArgs e)
         {
-            can_bitrate = s;
+            check_hex_value(sender, e, 2);
         }
 
-        private void combo_box_can_bitrate_selected_index_changed(object sender, EventArgs e)
+        private void text_box_hex5_key_press(object sender, KeyPressEventArgs e)
         {
-            can_bitrate = combo_box_can_bitrate.SelectedIndex.ToString();
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_can_setup_click(object sender, EventArgs e)
+        private void text_box_hex6_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                serial_port.Write("S");
-                serial_port.Write(can_bitrate);
-                serial_port.Write("\r");
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_can_version_click(object sender, EventArgs e)
+        private void text_box_hex7_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                serial_port.Write("\r");
-                serial_port.Write("\r");
-                serial_port.Write("\r");
-                serial_port.Write("\r");
-                serial_port.Write("\r");
-                serial_port.Write("V\r");
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_can_flags_click(object sender, EventArgs e)
+        private void text_box_hex8_key_press(object sender, KeyPressEventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                serial_port.Write("F\r");
-            }
+            check_hex_value(sender, e, 2);
         }
 
-        public virtual void button_serial_number_click(object sender, EventArgs e)
+        private void text_box_id_leave(object sender, EventArgs e)
         {
-            if (serial_port.IsOpen)
-            {
-                serial_port.Write("N\r");
-            }
-        }
-
-        private void increase_msg_counter_received()
-        {
-            msg_counter_received++;
-            toolStripStatusLabel_msg_counter_received.Text = "Counter: " + msg_counter_received.ToString();
-        }
-
-        private void serial_port_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
-        {
-            try
-            {
-                receive_buffer = serial_port.ReadExisting();
-                try
-                {
-                    this.Invoke(new EventHandler(DisplayText));
-                }
-                catch (System.InvalidOperationException)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
-            }
-            catch (System.TimeoutException ex)
-            {
-                MessageBox.Show(serial_port.PortName + ": " + ex.Message);
-            }
-        }
-
-        private void DisplayText(object s, EventArgs e)
-        {
-            int buff_len = receive_buffer.Length;
-            int buff_pos = -1;
-            int c = ' ';
-            if (buff_len > 1)
-            {
-                // More than one character
-                if ((buff_pos = receive_buffer.IndexOf("\r")) >= 0)
-                {
-                    richTextBox_receive.AppendText(receive_buffer.Substring(0, buff_pos));
-                    richTextBox_receive.AppendText("[CR]");
-                    richTextBox_receive.AppendText(receive_buffer.Substring(buff_pos, (buff_len - buff_pos)));
-                    increase_msg_counter_received();
-                }
-                else
-                {
-                    richTextBox_receive.AppendText(receive_buffer);
-                    increase_msg_counter_received();
-                }
-            }
-            else if (buff_len == 1)
-            {
-                // Only one character
-                c = receive_buffer[0];
-                if (c == 13)
-                {
-                    richTextBox_receive.AppendText("[CR]");
-                    richTextBox_receive.AppendText(receive_buffer);
-                }
-                else if (c == 7)
-                {
-                    richTextBox_receive.AppendText("[BELL]\n");
-                }
-            }
-        }
-
-        private void text_box_id_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (checkBox_ext.Checked == true)
-            {
-                CheckHexValue(sender, e, 8);
-            }
-            else
-            {
-                CheckHexValue(sender, e, 3);
-            }
-        }
-
-        private void text_box_hex1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex4_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex5_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex6_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex7_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_hex8_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            CheckHexValue(sender, e, 2);
-        }
-
-        private void text_box_id_Leave(object sender, EventArgs e)
-        {
-            if (checkBox_ext.Checked == true)
+            if (check_box_ext.Checked == true)
             {
                 if (text_box_id.TextLength == 0)
                 {
@@ -496,54 +420,129 @@ namespace CAN_monitor_lib
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex1_Leave(object sender, EventArgs e)
+        private void text_box_hex1_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex2_Leave(object sender, EventArgs e)
+        private void text_box_hex2_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex3_Leave(object sender, EventArgs e)
+        private void text_box_hex3_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex4_Leave(object sender, EventArgs e)
+        private void text_box_hex4_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex5_Leave(object sender, EventArgs e)
+        private void text_box_hex5_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex6_Leave(object sender, EventArgs e)
+        private void text_box_hex6_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex7_Leave(object sender, EventArgs e)
+        private void text_box_hex7_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void text_box_hex8_Leave(object sender, EventArgs e)
+        private void text_box_hex8_leave(object sender, EventArgs e)
         {
             (sender as TextBox).Text = (sender as TextBox).Text.ToUpper();
         }
 
-        private void numericUpDown_dlc_ValueChanged(object sender, EventArgs e)
+        private void update_data_boxes()
         {
-            UpdateDataBoxes();
+            if (numeric_up_down_dlc.Value < 8)
+            {
+                text_box_hex8.Visible = false;
+            }
+            else
+            {
+                text_box_hex8.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 7)
+            {
+                text_box_hex7.Visible = false;
+            }
+            else
+            {
+                text_box_hex7.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 6)
+            {
+                text_box_hex6.Visible = false;
+            }
+            else
+            {
+                text_box_hex6.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 5)
+            {
+                text_box_hex5.Visible = false;
+            }
+            else
+            {
+                text_box_hex5.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 4)
+            {
+                text_box_hex4.Visible = false;
+            }
+            else
+            {
+                text_box_hex4.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 3)
+            {
+                text_box_hex3.Visible = false;
+            }
+            else
+            {
+                text_box_hex3.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 2)
+            {
+                text_box_hex2.Visible = false;
+            }
+            else
+            {
+                text_box_hex2.Visible = true;
+            }
+
+            if (numeric_up_down_dlc.Value < 1)
+            {
+                text_box_hex1.Visible = false;
+            }
+            else
+            {
+                text_box_hex1.Visible = true;
+            }
         }
 
-        private void checkBox_ext_CheckedChanged(object sender, EventArgs e)
+        private void numeric_up_down_dlc_value_changed(object sender, EventArgs e)
         {
-            if (checkBox_ext.Checked == true)
+            update_data_boxes();
+        }
+
+        private void check_box_ext_checked_changed(object sender, EventArgs e)
+        {
+            if (check_box_ext.Checked == true)
             {
                 text_box_id.Text = "00000" + text_box_id.Text;
             }
@@ -553,9 +552,9 @@ namespace CAN_monitor_lib
             }
         }
 
-        private void checkBox_rtr_CheckedChanged(object sender, EventArgs e)
+        private void check_box_rtr_checked_changed(object sender, EventArgs e)
         {
-            if (checkBox_rtr.Checked == true)
+            if (check_box_rtr.Checked == true)
             {
                 text_box_hex1.Visible = false;
                 text_box_hex2.Visible = false;
@@ -568,7 +567,7 @@ namespace CAN_monitor_lib
             }
             else
             {
-                UpdateDataBoxes();
+                update_data_boxes();
             }
         }
 
@@ -600,35 +599,35 @@ namespace CAN_monitor_lib
                     can_frame_data += "t";
                 }
                 can_frame_data += id + dlc;
-                if (numericUpDown_dlc.Value >= 1)
+                if (numeric_up_down_dlc.Value >= 1)
                 {
                     can_frame_data += hex1;
                 }
-                if (numericUpDown_dlc.Value >= 2)
+                if (numeric_up_down_dlc.Value >= 2)
                 {
                     can_frame_data += hex2;
                 }
-                if (numericUpDown_dlc.Value >= 3)
+                if (numeric_up_down_dlc.Value >= 3)
                 {
                     can_frame_data += hex3;
                 }
-                if (numericUpDown_dlc.Value >= 4)
+                if (numeric_up_down_dlc.Value >= 4)
                 {
                     can_frame_data += hex4;
                 }
-                if (numericUpDown_dlc.Value >= 5)
+                if (numeric_up_down_dlc.Value >= 5)
                 {
                     can_frame_data += hex5;
                 }
-                if (numericUpDown_dlc.Value >= 6)
+                if (numeric_up_down_dlc.Value >= 6)
                 {
                     can_frame_data += hex6;
                 }
-                if (numericUpDown_dlc.Value >= 7)
+                if (numeric_up_down_dlc.Value >= 7)
                 {
                     can_frame_data += hex7;
                 }
-                if (numericUpDown_dlc.Value >= 8)
+                if (numeric_up_down_dlc.Value >= 8)
                 {
                     can_frame_data += hex8;
                 }
@@ -648,15 +647,15 @@ namespace CAN_monitor_lib
             label_result.Text = "Resulting command: " + can_frame_data + "[CR]";
         }
 
-        public virtual void button_send_frame_click(object sender, EventArgs e)
+        public void button_send_frame_click(object sender, EventArgs e)
         {
-            send_frame(checkBox_rtr.Checked, checkBox_ext.Checked, text_box_id.Text, 
-                numericUpDown_dlc.Value.ToString(), text_box_hex1.Text, text_box_hex2.Text,
+            send_frame(check_box_rtr.Checked, check_box_ext.Checked, text_box_id.Text, 
+                numeric_up_down_dlc.Value.ToString(), text_box_hex1.Text, text_box_hex2.Text,
                 text_box_hex3.Text, text_box_hex4.Text, text_box_hex5.Text, text_box_hex6.Text,
                 text_box_hex7.Text, text_box_hex8.Text);
         }
 
-        public virtual void button_time_stamp_on_click(object sender, EventArgs e)
+        public void button_time_stamp_on_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {
@@ -664,7 +663,7 @@ namespace CAN_monitor_lib
             }
         }
 
-        public virtual void button_time_stamp_off_click(object sender, EventArgs e)
+        public void button_time_stamp_off_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {
@@ -672,7 +671,7 @@ namespace CAN_monitor_lib
             }
         }
 
-        public virtual void button_auto_on_click(object sender, EventArgs e)
+        public void button_auto_on_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {
@@ -680,7 +679,7 @@ namespace CAN_monitor_lib
             }
         }
 
-        public virtual void button_auto_off_click(object sender, EventArgs e)
+        public void button_auto_off_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {
@@ -688,7 +687,7 @@ namespace CAN_monitor_lib
             }
         }
 
-        public virtual void button_poll_one_click(object sender, EventArgs e)
+        public void button_poll_one_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {
@@ -696,7 +695,7 @@ namespace CAN_monitor_lib
             }
         }
 
-        public virtual void button_poll_all_click(object sender, EventArgs e)
+        public void button_poll_all_click(object sender, EventArgs e)
         {
             if (serial_port.IsOpen)
             {

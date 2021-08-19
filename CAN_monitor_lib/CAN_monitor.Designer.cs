@@ -58,10 +58,10 @@
             this.text_box_id = new System.Windows.Forms.TextBox();
             this.button_send_frame = new System.Windows.Forms.Button();
             this.text_box_hex1 = new System.Windows.Forms.TextBox();
-            this.checkBox_rtr = new System.Windows.Forms.CheckBox();
+            this.check_box_rtr = new System.Windows.Forms.CheckBox();
             this.text_box_hex2 = new System.Windows.Forms.TextBox();
-            this.checkBox_ext = new System.Windows.Forms.CheckBox();
-            this.numericUpDown_dlc = new System.Windows.Forms.NumericUpDown();
+            this.check_box_ext = new System.Windows.Forms.CheckBox();
+            this.numeric_up_down_dlc = new System.Windows.Forms.NumericUpDown();
             this.text_box_hex3 = new System.Windows.Forms.TextBox();
             this.text_box_hex8 = new System.Windows.Forms.TextBox();
             this.text_box_hex4 = new System.Windows.Forms.TextBox();
@@ -77,14 +77,14 @@
             this.group_box_com_port.SuspendLayout();
             this.group_box_can_commands.SuspendLayout();
             this.group_box_can_transmit_frame.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_up_down_dlc)).BeginInit();
             this.group_box_can_receive_frame.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // serial_port
             // 
-            this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_DataReceived);
+            this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_data_received);
             // 
             // group_box_com_port
             // 
@@ -348,10 +348,10 @@
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_id);
             this.group_box_can_transmit_frame.Controls.Add(this.button_send_frame);
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex1);
-            this.group_box_can_transmit_frame.Controls.Add(this.checkBox_rtr);
+            this.group_box_can_transmit_frame.Controls.Add(this.check_box_rtr);
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex2);
-            this.group_box_can_transmit_frame.Controls.Add(this.checkBox_ext);
-            this.group_box_can_transmit_frame.Controls.Add(this.numericUpDown_dlc);
+            this.group_box_can_transmit_frame.Controls.Add(this.check_box_ext);
+            this.group_box_can_transmit_frame.Controls.Add(this.numeric_up_down_dlc);
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex3);
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex8);
             this.group_box_can_transmit_frame.Controls.Add(this.text_box_hex4);
@@ -416,8 +416,8 @@
             this.text_box_id.Size = new System.Drawing.Size(79, 22);
             this.text_box_id.TabIndex = 0;
             this.text_box_id.Text = "100";
-            this.text_box_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_id_KeyPress);
-            this.text_box_id.Leave += new System.EventHandler(this.text_box_id_Leave);
+            this.text_box_id.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_id_key_press);
+            this.text_box_id.Leave += new System.EventHandler(this.text_box_id_leave);
             // 
             // button_send_frame
             // 
@@ -438,20 +438,20 @@
             this.text_box_hex1.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex1.TabIndex = 2;
             this.text_box_hex1.Text = "00";
-            this.text_box_hex1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex1_KeyPress);
-            this.text_box_hex1.Leave += new System.EventHandler(this.text_box_hex1_Leave);
+            this.text_box_hex1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex1_key_press);
+            this.text_box_hex1.Leave += new System.EventHandler(this.text_box_hex1_leave);
             // 
-            // checkBox_rtr
+            // check_box_rtr
             // 
-            this.checkBox_rtr.AutoSize = true;
-            this.checkBox_rtr.Location = new System.Drawing.Point(8, 111);
-            this.checkBox_rtr.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox_rtr.Name = "checkBox_rtr";
-            this.checkBox_rtr.Size = new System.Drawing.Size(103, 21);
-            this.checkBox_rtr.TabIndex = 11;
-            this.checkBox_rtr.Text = "RTR Frame";
-            this.checkBox_rtr.UseVisualStyleBackColor = true;
-            this.checkBox_rtr.CheckedChanged += new System.EventHandler(this.checkBox_rtr_CheckedChanged);
+            this.check_box_rtr.AutoSize = true;
+            this.check_box_rtr.Location = new System.Drawing.Point(8, 111);
+            this.check_box_rtr.Margin = new System.Windows.Forms.Padding(4);
+            this.check_box_rtr.Name = "check_box_rtr";
+            this.check_box_rtr.Size = new System.Drawing.Size(103, 21);
+            this.check_box_rtr.TabIndex = 11;
+            this.check_box_rtr.Text = "RTR Frame";
+            this.check_box_rtr.UseVisualStyleBackColor = true;
+            this.check_box_rtr.CheckedChanged += new System.EventHandler(this.check_box_rtr_checked_changed);
             // 
             // text_box_hex2
             // 
@@ -461,40 +461,40 @@
             this.text_box_hex2.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex2.TabIndex = 3;
             this.text_box_hex2.Text = "00";
-            this.text_box_hex2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex2_KeyPress);
-            this.text_box_hex2.Leave += new System.EventHandler(this.text_box_hex2_Leave);
+            this.text_box_hex2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex2_key_press);
+            this.text_box_hex2.Leave += new System.EventHandler(this.text_box_hex2_leave);
             // 
-            // checkBox_ext
+            // check_box_ext
             // 
-            this.checkBox_ext.AutoSize = true;
-            this.checkBox_ext.Location = new System.Drawing.Point(8, 82);
-            this.checkBox_ext.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox_ext.Name = "checkBox_ext";
-            this.checkBox_ext.Size = new System.Drawing.Size(155, 21);
-            this.checkBox_ext.TabIndex = 10;
-            this.checkBox_ext.Text = "Extended ID (29 bit)";
-            this.checkBox_ext.UseVisualStyleBackColor = true;
-            this.checkBox_ext.CheckedChanged += new System.EventHandler(this.checkBox_ext_CheckedChanged);
+            this.check_box_ext.AutoSize = true;
+            this.check_box_ext.Location = new System.Drawing.Point(8, 82);
+            this.check_box_ext.Margin = new System.Windows.Forms.Padding(4);
+            this.check_box_ext.Name = "check_box_ext";
+            this.check_box_ext.Size = new System.Drawing.Size(155, 21);
+            this.check_box_ext.TabIndex = 10;
+            this.check_box_ext.Text = "Extended ID (29 bit)";
+            this.check_box_ext.UseVisualStyleBackColor = true;
+            this.check_box_ext.CheckedChanged += new System.EventHandler(this.check_box_ext_checked_changed);
             // 
-            // numericUpDown_dlc
+            // numeric_up_down_dlc
             // 
-            this.numericUpDown_dlc.Location = new System.Drawing.Point(96, 52);
-            this.numericUpDown_dlc.Margin = new System.Windows.Forms.Padding(4);
-            this.numericUpDown_dlc.Maximum = new decimal(new int[] {
+            this.numeric_up_down_dlc.Location = new System.Drawing.Point(96, 52);
+            this.numeric_up_down_dlc.Margin = new System.Windows.Forms.Padding(4);
+            this.numeric_up_down_dlc.Maximum = new decimal(new int[] {
             8,
             0,
             0,
             0});
-            this.numericUpDown_dlc.Name = "numericUpDown_dlc";
-            this.numericUpDown_dlc.ReadOnly = true;
-            this.numericUpDown_dlc.Size = new System.Drawing.Size(40, 22);
-            this.numericUpDown_dlc.TabIndex = 1;
-            this.numericUpDown_dlc.Value = new decimal(new int[] {
+            this.numeric_up_down_dlc.Name = "numeric_up_down_dlc";
+            this.numeric_up_down_dlc.ReadOnly = true;
+            this.numeric_up_down_dlc.Size = new System.Drawing.Size(40, 22);
+            this.numeric_up_down_dlc.TabIndex = 1;
+            this.numeric_up_down_dlc.Value = new decimal(new int[] {
             8,
             0,
             0,
             0});
-            this.numericUpDown_dlc.ValueChanged += new System.EventHandler(this.numericUpDown_dlc_ValueChanged);
+            this.numeric_up_down_dlc.ValueChanged += new System.EventHandler(this.numeric_up_down_dlc_value_changed);
             // 
             // text_box_hex3
             // 
@@ -504,8 +504,8 @@
             this.text_box_hex3.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex3.TabIndex = 4;
             this.text_box_hex3.Text = "00";
-            this.text_box_hex3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex3_KeyPress);
-            this.text_box_hex3.Leave += new System.EventHandler(this.text_box_hex3_Leave);
+            this.text_box_hex3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex3_key_press);
+            this.text_box_hex3.Leave += new System.EventHandler(this.text_box_hex3_leave);
             // 
             // text_box_hex8
             // 
@@ -515,8 +515,8 @@
             this.text_box_hex8.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex8.TabIndex = 9;
             this.text_box_hex8.Text = "00";
-            this.text_box_hex8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex8_KeyPress);
-            this.text_box_hex8.Leave += new System.EventHandler(this.text_box_hex8_Leave);
+            this.text_box_hex8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex8_key_press);
+            this.text_box_hex8.Leave += new System.EventHandler(this.text_box_hex8_leave);
             // 
             // text_box_hex4
             // 
@@ -526,8 +526,8 @@
             this.text_box_hex4.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex4.TabIndex = 5;
             this.text_box_hex4.Text = "00";
-            this.text_box_hex4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex4_KeyPress);
-            this.text_box_hex4.Leave += new System.EventHandler(this.text_box_hex4_Leave);
+            this.text_box_hex4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex4_key_press);
+            this.text_box_hex4.Leave += new System.EventHandler(this.text_box_hex4_leave);
             // 
             // text_box_hex7
             // 
@@ -537,8 +537,8 @@
             this.text_box_hex7.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex7.TabIndex = 8;
             this.text_box_hex7.Text = "00";
-            this.text_box_hex7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex7_KeyPress);
-            this.text_box_hex7.Leave += new System.EventHandler(this.text_box_hex7_Leave);
+            this.text_box_hex7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex7_key_press);
+            this.text_box_hex7.Leave += new System.EventHandler(this.text_box_hex7_leave);
             // 
             // text_box_hex5
             // 
@@ -548,8 +548,8 @@
             this.text_box_hex5.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex5.TabIndex = 6;
             this.text_box_hex5.Text = "00";
-            this.text_box_hex5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex5_KeyPress);
-            this.text_box_hex5.Leave += new System.EventHandler(this.text_box_hex5_Leave);
+            this.text_box_hex5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex5_key_press);
+            this.text_box_hex5.Leave += new System.EventHandler(this.text_box_hex5_leave);
             // 
             // text_box_hex6
             // 
@@ -559,8 +559,8 @@
             this.text_box_hex6.Size = new System.Drawing.Size(28, 22);
             this.text_box_hex6.TabIndex = 7;
             this.text_box_hex6.Text = "00";
-            this.text_box_hex6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex6_KeyPress);
-            this.text_box_hex6.Leave += new System.EventHandler(this.text_box_hex6_Leave);
+            this.text_box_hex6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_box_hex6_key_press);
+            this.text_box_hex6.Leave += new System.EventHandler(this.text_box_hex6_leave);
             // 
             // group_box_can_receive_frame
             // 
@@ -640,7 +640,7 @@
             this.group_box_can_commands.PerformLayout();
             this.group_box_can_transmit_frame.ResumeLayout(false);
             this.group_box_can_transmit_frame.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_dlc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numeric_up_down_dlc)).EndInit();
             this.group_box_can_receive_frame.ResumeLayout(false);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
@@ -667,10 +667,10 @@
         private System.Windows.Forms.TextBox text_box_id;
         private System.Windows.Forms.Button button_send_frame;
         private System.Windows.Forms.TextBox text_box_hex1;
-        private System.Windows.Forms.CheckBox checkBox_rtr;
+        private System.Windows.Forms.CheckBox check_box_rtr;
         private System.Windows.Forms.TextBox text_box_hex2;
-        private System.Windows.Forms.CheckBox checkBox_ext;
-        private System.Windows.Forms.NumericUpDown numericUpDown_dlc;
+        private System.Windows.Forms.CheckBox check_box_ext;
+        private System.Windows.Forms.NumericUpDown numeric_up_down_dlc;
         private System.Windows.Forms.TextBox text_box_hex3;
         private System.Windows.Forms.TextBox text_box_hex8;
         private System.Windows.Forms.TextBox text_box_hex4;

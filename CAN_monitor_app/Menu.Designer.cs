@@ -32,6 +32,10 @@ namespace CAN_monitor_app
             this.tab_control = new System.Windows.Forms.TabControl();
             this.tab_page_global = new System.Windows.Forms.TabPage();
             this.split_container = new System.Windows.Forms.SplitContainer();
+            this.list_view = new CAN_monitor_app.BufferedListView();
+            this.column_header1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_header2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.column_header3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.group_box_can_transmit_frame = new System.Windows.Forms.GroupBox();
             this.label_interval = new System.Windows.Forms.Label();
             this.button_send_frame = new System.Windows.Forms.Button();
@@ -49,10 +53,6 @@ namespace CAN_monitor_app
             this.combo_box_com_ports = new System.Windows.Forms.ComboBox();
             this.button_add_new_tab = new System.Windows.Forms.Button();
             this.combo_box_com_baud_rate = new System.Windows.Forms.ComboBox();
-            this.list_view = new CAN_monitor_app.BufferedListView();
-            this.column_header1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.column_header2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.column_header3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tab_control.SuspendLayout();
             this.tab_page_global.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.split_container)).BeginInit();
@@ -107,6 +107,39 @@ namespace CAN_monitor_app
             this.split_container.SplitterDistance = 351;
             this.split_container.TabIndex = 0;
             // 
+            // list_view
+            // 
+            this.list_view.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.column_header1,
+            this.column_header2,
+            this.column_header3});
+            this.list_view.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list_view.GridLines = true;
+            this.list_view.HideSelection = false;
+            this.list_view.Location = new System.Drawing.Point(0, 0);
+            this.list_view.Name = "list_view";
+            this.list_view.Size = new System.Drawing.Size(351, 618);
+            this.list_view.TabIndex = 0;
+            this.list_view.UseCompatibleStateImageBehavior = false;
+            this.list_view.View = System.Windows.Forms.View.Details;
+            // 
+            // column_header1
+            // 
+            this.column_header1.Text = "Port Name";
+            this.column_header1.Width = 115;
+            // 
+            // column_header2
+            // 
+            this.column_header2.Text = "Status";
+            this.column_header2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.column_header2.Width = 116;
+            // 
+            // column_header3
+            // 
+            this.column_header3.Text = "Counter";
+            this.column_header3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.column_header3.Width = 116;
+            // 
             // group_box_can_transmit_frame
             // 
             this.group_box_can_transmit_frame.Controls.Add(this.label_interval);
@@ -124,9 +157,9 @@ namespace CAN_monitor_app
             this.label_interval.AutoSize = true;
             this.label_interval.Location = new System.Drawing.Point(111, 21);
             this.label_interval.Name = "label_interval";
-            this.label_interval.Size = new System.Drawing.Size(54, 17);
+            this.label_interval.Size = new System.Drawing.Size(86, 17);
             this.label_interval.TabIndex = 4;
-            this.label_interval.Text = "Interval";
+            this.label_interval.Text = "Interval (ms)";
             // 
             // button_send_frame
             // 
@@ -295,39 +328,6 @@ namespace CAN_monitor_app
             this.combo_box_com_baud_rate.Size = new System.Drawing.Size(99, 24);
             this.combo_box_com_baud_rate.TabIndex = 15;
             // 
-            // list_view
-            // 
-            this.list_view.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.column_header1,
-            this.column_header2,
-            this.column_header3});
-            this.list_view.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list_view.GridLines = true;
-            this.list_view.HideSelection = false;
-            this.list_view.Location = new System.Drawing.Point(0, 0);
-            this.list_view.Name = "list_view";
-            this.list_view.Size = new System.Drawing.Size(351, 618);
-            this.list_view.TabIndex = 0;
-            this.list_view.UseCompatibleStateImageBehavior = false;
-            this.list_view.View = System.Windows.Forms.View.Details;
-            // 
-            // column_header1
-            // 
-            this.column_header1.Text = "Port Name";
-            this.column_header1.Width = 115;
-            // 
-            // column_header2
-            // 
-            this.column_header2.Text = "Status";
-            this.column_header2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.column_header2.Width = 116;
-            // 
-            // column_header3
-            // 
-            this.column_header3.Text = "Counter";
-            this.column_header3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.column_header3.Width = 116;
-            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -351,6 +351,7 @@ namespace CAN_monitor_app
             this.group_box_com_ports.ResumeLayout(false);
             this.group_box_com_ports.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion
