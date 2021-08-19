@@ -54,6 +54,7 @@ namespace CAN_monitor_app
                     if (port_name == disconnected_ports_lst[i])
                     {
                         found = true;
+                        break;
                     }
                 }
                 if (found)
@@ -70,31 +71,12 @@ namespace CAN_monitor_app
                 }
             }
             // Update port status table
-            foreach (CAN_monitor can_monitor in active_can_monitors_lst)
+            for (int i = 0; i <= active_can_monitors_lst.Count - 1; i++)
             {
-                bool found = false;
-                foreach (ListViewItem item in list_view.Items)
-                {
-                    // Update status of ports already on the table
-                    if (item.SubItems[0].Text == can_monitor.get_port_name())
-                    {
-                        Tuple<string, string, string> data = can_monitor.get_port_status();
-                        found = true;
-                        if (!disconnected_ports_lst.Contains(data.Item1))
-                            {
-                            item.SubItems[1].Text = data.Item2;
-                            if (item.SubItems[1].Text == "Open")
-                                item.SubItems[1].BackColor = Color.Green;
-                            else
-                                item.SubItems[1].BackColor = Color.Red;
-                            }
-                        item.SubItems[2].Text = data.Item3;
-                    }
-                }
                 // Add new active ports
-                if (!found)
+                if (i >= list_view.Items.Count)
                 {
-                    Tuple<string, string, string> data = can_monitor.get_port_status();
+                    Tuple<string, string, string> data = active_can_monitors_lst[i].get_port_status();
                     ListViewItem item = new ListViewItem(data.Item1);
                     if (!disconnected_ports_lst.Contains(data.Item1))
                     {
@@ -112,6 +94,24 @@ namespace CAN_monitor_app
                     item.SubItems.Add(data.Item3);
                     item.UseItemStyleForSubItems = false;
                     list_view.Items.Add(item);
+                }
+                // Update port status
+                else
+                {
+                    Tuple<string, string, string> data = active_can_monitors_lst[i].get_port_status();
+                    if (!disconnected_ports_lst.Contains(data.Item1))
+                    {
+                        list_view.Items[i].SubItems[1].Text = data.Item2;
+                        if (list_view.Items[i].SubItems[1].Text == "Open")
+                        {
+                            list_view.Items[i].SubItems[1].BackColor = Color.Green;
+                        }
+                        else
+                        {
+                            list_view.Items[i].SubItems[1].BackColor = Color.Red;
+                        }
+                        list_view.Items[i].SubItems[2].Text = data.Item3;
+                    }
                 }
             }
             // Check if there are new available ports
@@ -152,7 +152,7 @@ namespace CAN_monitor_app
                     {
                         if (can_monitor.get_port_name() == active_ports_lst[i])
                         {
-                            can_monitor.disconnected();
+                            can_monitor.button_com_close_click(sender, e);
                             // Update interface
                             foreach (ListViewItem item in list_view.Items)
                             {
@@ -240,6 +240,7 @@ namespace CAN_monitor_app
             active_can_monitors_lst.RemoveAt(index);
             Console.WriteLine(index);
             active_ports_lst.Remove(name);
+            disconnected_ports_lst.Remove(name);
             add_available_port(name);
             // Update interface
             list_view.Items.RemoveAt(index);
@@ -368,6 +369,15 @@ namespace CAN_monitor_app
                 timer_send.Stop();
                 button_send_frame_clicked = false;
                 button_send_frame.Text = "Start";
+            }
+        }
+
+        private void text_box_interval_text_changed(object sender, EventArgs e)
+        {
+            if (Int32.Parse(text_box_interval.Text) < 2 * CAN_monitor.WRITE_TIMEOUT)
+            {
+                AutoClosingMessageBox.Show("Invalid Interval", "Interval must be at least double the value of the WRITE_TIMEOUT variable", 5000);
+                text_box_interval.Text = (2 * CAN_monitor.WRITE_TIMEOUT).ToString();
             }
         }
     }

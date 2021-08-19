@@ -1,10 +1,31 @@
 <?xml version="1.0"?>
 <ArrayOfCAN_monitor_attributes xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CAN_monitor_attributes>
+    <port_name>COM6</port_name>
+    <com_is_open>true</com_is_open>
+    <com_baud_rate>57600</com_baud_rate>
+    <can_is_open>true</can_is_open>
+    <can_bitrate>5</can_bitrate>
+  </CAN_monitor_attributes>
+  <CAN_monitor_attributes>
     <port_name>COM5</port_name>
+    <com_is_open>true</com_is_open>
+    <com_baud_rate>57600</com_baud_rate>
+    <can_is_open>true</can_is_open>
+    <can_bitrate>5</can_bitrate>
+  </CAN_monitor_attributes>
+  <CAN_monitor_attributes>
+    <port_name>COM3</port_name>
     <com_is_open>false</com_is_open>
     <com_baud_rate>57600</com_baud_rate>
     <can_is_open>false</can_is_open>
+    <can_bitrate>5</can_bitrate>
+  </CAN_monitor_attributes>
+  <CAN_monitor_attributes>
+    <port_name>COM7</port_name>
+    <com_is_open>true</com_is_open>
+    <com_baud_rate>57600</com_baud_rate>
+    <can_is_open>true</can_is_open>
     <can_bitrate>5</can_bitrate>
   </CAN_monitor_attributes>
 </ArrayOfCAN_monitor_attributes>
